@@ -821,11 +821,11 @@ fn test_treeview() {
         parent: 1000
     };
 
-    let tree_item_t1 = TreeViewItemT{ text: "test", parent: 1001u64 };
-    let tree_item_t2 = TreeViewItemT{ text: "test", parent: 1002u64 };
-    let tree_item_t3 = TreeViewItemT{ text: "test", parent: 1002u64 };
-    let tree_item_t4 = TreeViewItemT{ text: "test", parent: 1002u64 };
-    let tree_item_t5 = TreeViewItemT{ text: "test", parent: 1004u64 };
+    let tree_item_t1 = TreeViewItemT{ text: "test", parent: 1001u64, disabled: false };
+    let tree_item_t2 = TreeViewItemT{ text: "test", parent: 1002u64, disabled: false };
+    let tree_item_t3 = TreeViewItemT{ text: "test", parent: 1002u64, disabled: false };
+    let tree_item_t4 = TreeViewItemT{ text: "test", parent: 1002u64, disabled: false };
+    let tree_item_t5 = TreeViewItemT{ text: "test", parent: 1004u64, disabled: false };
 
     
     ui.pack_control(&1000, window());
@@ -838,8 +838,8 @@ fn test_treeview() {
     ui.pack_control(&1100, MenuItemT{text: "", parent: 1000, disabled: false});
     ui.commit().expect("Commit was not successful");
 
-    let bad_tree_item_t1 = TreeViewItemT{ text: "test", parent: 1000u64 };
-    let bad_tree_item_t2 = TreeViewItemT{ text: "test", parent: 1100u64 };
+    let bad_tree_item_t1 = TreeViewItemT{ text: "test", parent: 1000u64, disabled: false };
+    let bad_tree_item_t2 = TreeViewItemT{ text: "test", parent: 1100u64, disabled: false };
 
     ui.pack_control(&2000, bad_tree_item_t1);
     match ui.commit() { Err(Error::BadParent(_)) => {}, r => panic!("Should have returned Error::BadParent, got {:?}", r) }
