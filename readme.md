@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/k6sdi0ym8cby98xm/branch/dev?svg=true)](https://ci.appveyor.com/project/gabdube/native-windows-gui/branch/dev)
+
+
 # Native Windows GUI
 
 <b>Native Windows GUI (NWG)</b> is a thin GUI toolkit built over the <b>Microsoft Windows WINAPI</b> for rust. The 
