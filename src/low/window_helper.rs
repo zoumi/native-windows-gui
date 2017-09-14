@@ -77,7 +77,7 @@ pub struct WindowParams<S1: Into<String>, S2: Into<String>> {
 pub unsafe fn build_sysclass<S: Into<String>>(p: SysclassParams<S>) -> Result<(), SystemError> {
     use kernel32::{GetModuleHandleW, GetLastError};
     use user32::{LoadCursorW, RegisterClassExW};
-    use winapi::{WNDCLASSEXW, CS_HREDRAW, CS_VREDRAW, IDC_ARROW, COLOR_WINDOW, UINT, ERROR_CLASS_ALREADY_EXISTS};
+    use winapi::{WNDCLASSEXW, CS_HREDRAW, CS_VREDRAW, IDC_ARROW, COLOR_WINDOW, UINT, ERROR_CLASS_ALREADY_EXISTS,COLOR_BTNFACE};
 
     let hmod = GetModuleHandleW(ptr::null_mut());
     if hmod.is_null() { return Err(SystemError::SystemClassCreation); }

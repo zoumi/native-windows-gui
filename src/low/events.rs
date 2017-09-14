@@ -84,6 +84,16 @@ fn parse_datepicker_command(id: u64, ncode: u32) -> Option<(u64, Event, EventArg
   }
 }
 
+fn pasrse_list_view_command(id: u64, ncode: u32) -> Option<(u64, Event, EventArgs)> {
+  use winapi::DTN_CLOSEUP;
+  match ncode {
+    DTN_CLOSEUP => {  // DTN_DATETIMECHANGE is sent twice so instead we catch DTN_CLOSEUP ¯\_(ツ)_/¯
+      Some((id, Event::DateChanged, EventArgs::None))
+    },
+    _ => None
+  }
+}
+
 /**
   Parse the common controls notification passed through the `WM_COMMAND` message.
 */
@@ -91,6 +101,7 @@ fn parse_datepicker_command(id: u64, ncode: u32) -> Option<(u64, Event, EventArg
 fn parse_notify(id: u64, control_type: ControlType, w: WPARAM) -> Option<(u64, Event, EventArgs)> {
   match control_type {
     ControlType::DatePicker => parse_datepicker_command(id, w as u32),
+    //ControlType::ListView => pasrse_list_view_command(id, w as u32),
     _ => None
   }
 }

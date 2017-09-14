@@ -34,6 +34,7 @@ pub mod datepicker;
 pub mod file_dialog;
 pub mod timer;
 pub mod canvas;
+pub mod list_view;
 
 use std::any::TypeId;
 use std::hash::Hash;
@@ -56,6 +57,7 @@ pub use controls::file_dialog::{FileDialogT, FileDialog};
 pub use controls::timer::{TimerT, Timer};
 pub use controls::canvas::{CanvasT, Canvas, CanvasRenderer};
 pub use controls::datepicker::{DatePickerT, DatePicker};
+pub use controls::list_view::{ListViewT, ListView, ViewMode};
 use ui::Ui;
 use events::Event;
 use error::Error;
@@ -86,6 +88,7 @@ pub enum ControlType {
     TextBox,
     CheckBox,
     RadioButton,
+    ListView,
     ListBox,
     Label,
     ProgressBar,

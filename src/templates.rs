@@ -371,6 +371,27 @@ macro_rules! nwg_listbox {
 }
 
 
+#[macro_export]
+macro_rules! nwg_list_view {
+    (parent=$p:expr; $( $i:ident=$v:expr );* ) => { {
+        let mut t = 
+        $crate::ListViewT::<_, _>{ 
+            column: vec![],
+            text: "",
+            view_mode: $crate::ViewMode::Report,
+            position: (0, 0), size: (100, 30), 
+            visible: true,
+            disabled: false, 
+            align: $crate::constants::HTextAlign::Left,
+            parent: $p, font: None
+        };
+        
+        $( t.$i = $v; );*
+
+        t
+    }}
+}
+
 /**
     Sane defaults for the Menu control. Requires a window parent.
 
