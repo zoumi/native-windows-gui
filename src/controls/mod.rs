@@ -21,6 +21,7 @@ pub mod timer;
 pub mod treeview;
 pub mod frame;
 pub mod tabs;
+pub mod list_view;
 #[cfg(feature = "canvas")] pub mod canvas;
 
 use std::any::TypeId;
@@ -47,6 +48,7 @@ pub use controls::image_frame::{ImageFrameT, ImageFrame};
 pub use controls::treeview::{TreeViewT, TreeView, TreeViewItemT, TreeViewItem, TreeItemIterator};
 pub use controls::frame::{FrameT, Frame};
 pub use controls::tabs::{TabViewT, TabView, TabT, Tab};
+pub use controls::list_view::{ListView,ViewMode,ListViewT};
 #[cfg(feature = "canvas")] pub use controls::canvas::{CanvasT, Canvas, CanvasRenderer};
 
 use ui::Ui;
@@ -125,6 +127,7 @@ pub enum ControlType {
     Frame,
     TabsView,
     Tab,
+    ListView,
     Undefined  // Control is not a common control
 }
 

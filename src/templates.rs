@@ -361,6 +361,45 @@ macro_rules! nwg_listbox {
     }}
 }
 
+/**
+    Sane defaults for the ListView control. Requires a parent.
+
+    Defaults:  
+    • column: `[]`  
+    • view_mode: `[]`  
+    • position: `(0, 0)`  
+    • size: `(100, 30)`  
+    • visible: `true`  
+    • disabled: `false`  
+    • align: `Left`
+    • font: `None`
+
+
+    Usage:  
+    `nwg_list_view!(parent="MyParent";)`  
+    `nwg_list_view!(parent="MyParent"; visible=false; size=(10, 10))`  
+    `nwg_list_view!(parent="MyParent"; \* Any combinations of the template properties*\)`    
+*/
+#[macro_export]
+macro_rules! nwg_list_view {
+    (parent=$p:expr; $( $i:ident=$v:expr );* ) => { {
+        let mut t = 
+        $crate::ListViewT::<_>{ 
+            column: vec![],
+            view_mode: $crate::ViewMode::Report,
+            position: (0, 0), size: (100, 30), 
+            visible: true,
+            disabled: false, 
+            align: $crate::constants::HTextAlign::Left,
+            parent: $p, font: None
+        };
+        
+        $( t.$i = $v; );*
+
+        t
+    }}
+}
+
 
 /**
     Sane defaults for the Menu control. Requires a window parent.

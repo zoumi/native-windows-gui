@@ -51,7 +51,7 @@ pub use controls::{WindowT, Window, MenuT, Menu, MenuItemT, MenuItem, ButtonT, B
  RadioButtonT, RadioButton, TimerT, Timer, LabelT, Label, ComboBoxT, ComboBox, SeparatorT, Separator, TextInputT, TextInput,
  FileDialogT, FileDialog, TextBoxT, TextBox, GroupBoxT, GroupBox, ProgressBarT, ProgressBar, DatePickerT, DatePicker, ImageFrameT,
  ImageFrame, TreeViewT, TreeView, TreeViewItemT, TreeViewItem, TreeItemIterator, FrameT, Frame, ContextMenuT, ContextMenu,
- TabViewT, TabView, TabT, Tab};
+ TabViewT, TabView, TabT, Tab, ListViewT, ListView, ViewMode};
 
 pub use resources::{FontT, Font, ImageT, OemImageT, MemoryImageT, Image};
 pub use ui::{Ui, dispatch_events, exit, toggle_console};

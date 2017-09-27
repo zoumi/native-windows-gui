@@ -131,6 +131,10 @@ unsafe extern "system" fn message_window_proc<ID: Hash+Clone+'static>(hwnd: HWND
 
     let ui: &mut UiInner<ID> = mem::transmute(w);
     let args: *mut *mut Any = mem::transmute::<LPARAM, *mut *mut Any>(l);
+        match msg {
+        WM_NOTIFY => {println!("WM_NOTIFY get in message_handler");return COMMIT_SUCCESS;},
+        _ => {}
+        }
 
     // Eval NWG messages
     let (processed, error): (bool, Option<Error>) = match msg {

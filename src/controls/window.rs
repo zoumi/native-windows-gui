@@ -192,7 +192,7 @@ impl Control for Window {
 
 #[allow(unused_variables)]
 unsafe extern "system" fn window_sysproc(hwnd: HWND, msg: UINT, w: WPARAM, l: LPARAM) -> LRESULT {
-    use winapi::{WM_CREATE, WM_CLOSE, GWL_USERDATA, WM_PAINT};
+    use winapi::{WM_CREATE, WM_CLOSE, GWL_USERDATA, WM_PAINT,WM_NOTIFY};
     use user32::{DefWindowProcW, PostQuitMessage, ShowWindow};
     use low::window_helper::get_window_long;
 
@@ -209,13 +209,18 @@ unsafe extern "system" fn window_sysproc(hwnd: HWND, msg: UINT, w: WPARAM, l: LP
                 PostQuitMessage(0);
             }
             true
-        }
+        },
+        WM_NOTIFY => true,
         _ => false
     };
 
     if handled {
         0
     } else {
+        match msg{
+        WM_NOTIFY => println!{"WM_NOTIFY still here"},
+        _ => {}
+        };
         DefWindowProcW(hwnd, msg, w, l)
     }
 }
